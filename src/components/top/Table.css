@@ -1,0 +1,23 @@
+thead {
+    background: var(--red-scale-3);
+}
+
+tbody tr:hover {
+    background: var(--red-scale-2);
+}
+
+tbody tr:nth-child(even) {
+    background: var(--white-scale-3);
+}
+
+tbody td:hover {
+    background: var(--red-scale-1);
+}
+
+table {
+    width: 625px;
+}
+
+.table-container  {
+    min-width: 625px;
+}

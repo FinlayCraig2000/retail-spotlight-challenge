@@ -1,0 +1,15 @@
+.app-container {
+    text-align: center;
+}
+
+.retail-information-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 10px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
