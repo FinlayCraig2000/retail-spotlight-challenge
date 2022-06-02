@@ -23,20 +23,3 @@ export const help = {
     Annual: "annual",
     BillionsOfDollars: "billions of dollars",
 }
-
-
-
-
-// Not needed, could add later
-
-// export const metaData = {
-//     Information: "Information",
-//     Symbol: "Symbol",
-//     LastRefreshed: "Last Refreshed",
-//     TimeZone: "Time Zone",
-//
-//     InformationData: "Weekly Prices (open, high, low, close) and Volumes",
-//     SymbolData: "IBM",
-//     LastRefreshedData: "2022-05-31",
-//     TimeZoneData: "US/Eastern"
-// }

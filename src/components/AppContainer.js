@@ -26,8 +26,9 @@ export class AppContainer extends React.Component {
         this.handleFetchData(help.apiURLGDP);
     }
 
-    handleFetchData(api) {
-        fetch(api)
+    // Calling API data
+    handleFetchData(apiURL) {
+        fetch(apiURL)
             .then(response => response.json())
             .then((result) => {
                 this.setState({
@@ -47,6 +48,7 @@ export class AppContainer extends React.Component {
         )
     }
 
+    // Button change data to GDP Economic Indicator
     handleGDPChange() {
         this.setState({
             isLoaded: false,
@@ -54,6 +56,7 @@ export class AppContainer extends React.Component {
         }, this.handleFetchData(help.apiURLGDP));
     }
 
+    // Button change data to weekly stock price of IBM
     handleWeeklyChange() {
         this.setState({
             isLoaded: false,

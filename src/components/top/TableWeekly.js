@@ -22,8 +22,7 @@ export class TableWeeklyComponent extends React.Component {
   }
 
   getListDate(number) {
-    var a = Object.keys(this.props.data[help.Data])
-    return a[number];
+    return Object.keys(this.props.data[help.Data])[number];
   }
 
   getListAmount(listData) {

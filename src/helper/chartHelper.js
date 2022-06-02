@@ -6,3 +6,11 @@ export const backgroundColor = [
     ['rgba(75, 192, 192, 0.2)'],
     ['rgba(153, 102, 255, 0.2)']
 ]
+
+export const chartTopLabels = [
+    ["open"],
+    ["high"],
+    ["low"],
+    ["close"],
+    ["volume"]
+]
