@@ -1,9 +1,0 @@
-.meta-data-container {
-    padding: 15px;
-}
-
-.meta-data-container span {
-    border: 2px solid var(--table-border-colour);
-    margin: 5px;
-    padding: 10px;
-}

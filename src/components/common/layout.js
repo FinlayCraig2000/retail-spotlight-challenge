@@ -10,9 +10,9 @@ export class BasicLayoutComponent extends React.Component {
                 handleGDPChange={this.props.handleGDPChange}
                 handleWeeklyChange={this.props.handleWeeklyChange}
             />
-
-            {this.props.children}
-
+              <div className="retail-information-container">
+                {this.props.children}
+              </div>
             <FooterComponent />
         </div>
       )

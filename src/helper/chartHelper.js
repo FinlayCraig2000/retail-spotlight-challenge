@@ -7,7 +7,7 @@ export const backgroundColor = [
     ['rgba(153, 102, 255, 0.2)']
 ]
 
-export const chartTopLabels = [
+export const weeklyChartTopLabels = [
     ["open"],
     ["high"],
     ["low"],

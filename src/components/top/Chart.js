@@ -1,8 +1,9 @@
 import React from "react";
 import Chart from "chart.js/auto";
 import { help } from "../../helper/enum";
-import { backgroundColor, chartTopLabels } from "../../helper/chartHelper";
+import { backgroundColor, weeklyChartTopLabels } from "../../helper/chartHelper";
 import "./Chart.css"
+import { RangeInputComponent } from "../common/input-range";
 
 export class ChartComponent extends React.Component {
   constructor(props) {
@@ -79,10 +80,10 @@ export class ChartComponent extends React.Component {
     this.newData = Object.values(this.props.data)[3];
 
     // Filling in the data from API in to arrays
-    this.newData.map((dataSets) => (
-      this.chartDataValues.push(dataSets.value),
-      this.chartLabelValues.push(dataSets.date)
-    ));
+    for (const dataSets of this.newData) {
+      this.chartDataValues.push(dataSets.value);
+      this.chartLabelValues.push(dataSets.date);
+    }
 
     // Bottom labels
     this.chart.data.labels = this.chartLabelValues;
@@ -102,42 +103,57 @@ export class ChartComponent extends React.Component {
       this.chartDataValues = [[],[],[],[],[]]
 
       // Not the best way but works.
-      this.newData.map((dataSets) => (
-        this.chartDataValues[0].push(dataSets[help.open]),
-        this.chartDataValues[1].push(dataSets[help.high]),
-        this.chartDataValues[2].push(dataSets[help.low]),
-        this.chartDataValues[3].push(dataSets[help.close]),
-        this.chartDataValues[4].push(dataSets[help.volume])
-      ));
+      for (const dataSets of this.newData) {
+        this.chartDataValues[0].push(dataSets[help.open]);
+        this.chartDataValues[1].push(dataSets[help.high]);
+        this.chartDataValues[2].push(dataSets[help.low]);
+        this.chartDataValues[3].push(dataSets[help.close]);
+        this.chartDataValues[4].push(dataSets[help.volume]);
+      }
 
       // Changing to get date values of JSON data
       this.newData = Object.keys(this.props.data[help.Data]);
 
       // Pushing date values into array for chart
-      this.newData.map((dataSets, number) => (
-        this.chartLabelValues.push(this.newData[number])
-      ));
+      for (var i = 0; i < this.newData.length; i++) {
+        this.chartLabelValues.push(this.newData[i]);
+      }
 
       // Bottom labels
       this.chart.data.labels = this.chartLabelValues;
 
       // Adding the data to the chart
       this.chart.data.datasets = this.chartDataValues.map((dataSets, number) => ({
-        label: chartTopLabels[number],
+        label: weeklyChartTopLabels[number],
         data: dataSets,
         backgroundColor: backgroundColor[number],
         fill: false
       }));
+
+      // console.log(this.chart.data.datasets)
+  }
+
+  handleChange(props) {
+    console.log(props.target.value)
+    // console.log(this.newData)
   }
 
   render() {
     return (
       <div className="chart-container">
-        <canvas
-          className="chart-canvas"
-          id="chart-gdp"
-          ref={this.chartRef}
-        />
+        <div className="canvas-chart-container">
+          <canvas
+            className="chart-canvas"
+            id="chart-gdp"
+            ref={this.chartRef}
+          />
+        </div>
+
+        <div className="chart-setting-container">
+          <RangeInputComponent
+            max={this.props.data}
+          />
+        </div>
       </div>
     )
   };

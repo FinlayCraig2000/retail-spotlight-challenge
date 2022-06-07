@@ -1,4 +1,4 @@
-.chart-container {
+.canvas-chart-container {
     position: sticky;
     border: 2px solid var(--table-border-colour);
     height: 500px;

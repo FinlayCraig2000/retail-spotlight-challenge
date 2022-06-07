@@ -2,12 +2,12 @@ thead {
     background: var(--red-scale-3);
 }
 
-tbody tr:hover {
-    background: var(--red-scale-2);
-}
-
 tbody tr:nth-child(even) {
     background: var(--white-scale-3);
+}
+
+tbody tr:hover {
+    background: var(--red-scale-2);
 }
 
 tbody td:hover {
@@ -16,8 +16,4 @@ tbody td:hover {
 
 table {
     width: 625px;
-}
-
-.table-container  {
-    min-width: 625px;
 }

@@ -66,9 +66,9 @@ export class AppContainer extends React.Component {
 
     handleTableHover = props => {
         // console.log(props.target.innerText)
-        // this.setState({
-        //     tableHover: props.target.innerText
-        // });
+        this.setState({
+             tableHover: props.target.innerText
+        });
     }
 
     render() {
@@ -78,21 +78,18 @@ export class AppContainer extends React.Component {
                     handleGDPChange={this.handleGDPChange}
                     handleWeeklyChange={this.handleWeeklyChange}
                 >
+                    <TableGDPComponent
+                        onMouseOver={this.handleTableHover}
+                        tableID={this.state.tableID}
+                        error={this.state.error}
+                        isLoaded={this.state.isLoaded}
+                        data={this.state.data}
+                    />
 
-                    <div className="retail-information-container GDP">
-                        <TableGDPComponent
-                            onMouseOver={this.handleTableHover}
-                            tableID={this.state.tableID}
-                            error={this.state.error}
-                            isLoaded={this.state.isLoaded}
-                            data={this.state.data}
-                        />
-
-                        <ChartComponent 
-                            data={this.state.data}
-                            tableID={this.state.tableID}
-                        />
-                    </div>
+                    <ChartComponent 
+                        data={this.state.data}
+                        tableID={this.state.tableID}
+                    />
                 </BasicLayoutComponent>
             );
         }
@@ -103,21 +100,18 @@ export class AppContainer extends React.Component {
                     handleGDPChange={this.handleGDPChange}
                     handleWeeklyChange={this.handleWeeklyChange}
                 >
-                    <div className="retail-information-container Weekly">
-                        <TableWeeklyComponent
-                            onMouseOver={this.handleTableHover}
-                            tableID={this.state.tableID}
-                            isActive={this.state.isActive}
-                            error={this.state.error}
-                            isLoaded={this.state.isLoaded}
-                            data={this.state.data}
-                        />
+                    <TableWeeklyComponent
+                        onMouseOver={this.handleTableHover}
+                        tableID={this.state.tableID}
+                        error={this.state.error}
+                        isLoaded={this.state.isLoaded}
+                        data={this.state.data}
+                    />
 
-                        <ChartComponent 
-                            data={this.state.data}
-                            tableID={this.state.tableID}
-                        />
-                    </div>
+                    <ChartComponent 
+                        data={this.state.data}
+                        tableID={this.state.tableID}
+                    />
                 </BasicLayoutComponent>
             );
         }

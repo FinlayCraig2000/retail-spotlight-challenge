@@ -1,7 +1,7 @@
 import React from "react";
 import { help } from "../../helper/enum";
-import { TableHeaderComponent } from "../common/tableHeader";
 import { TableRowComponent } from "../common/tableRow";
+import { TableLayoutComponent } from "../common/table-layout";
 import "./Table.css"
 
 export class TableWeeklyComponent extends React.Component {
@@ -64,32 +64,25 @@ export class TableWeeklyComponent extends React.Component {
     var newData = Object.values(this.props.data[help.Data]);
 
     return (
-      <div className="table-container">
-        <table>
-          <thead>
-            <TableHeaderComponent
-              tableID={this.props.tableID}
+      <TableLayoutComponent 
+        tableID={this.props.tableID}
+      >
+        {newData.map((item, itemNumber) => {
+            return <TableRowComponent
+              onMouseOver={this.props.onMouseOver}
+              type={help.tableWeekly}
+              key={itemNumber}
+              number={itemNumber}
+              date={this.getListDate(itemNumber)}
+              open={this.getListOpen(item)}
+              high={this.getListHigh(item)}
+              low={this.getListLow(item)}
+              close={this.getListClose(item)}
+              volume={this.getListVolume(item)}
             />
-          </thead>
-          <tbody>
-            {newData.map((item, itemNumber) => {
-                return <TableRowComponent
-                  onMouseOver={this.props.onMouseOver}
-                  type={help.tableWeekly}
-                  key={itemNumber}
-                  number={itemNumber}
-                  date={this.getListDate(itemNumber)}
-                  open={this.getListOpen(item)}
-                  high={this.getListHigh(item)}
-                  low={this.getListLow(item)}
-                  close={this.getListClose(item)}
-                  volume={this.getListVolume(item)}
-                />
-              })
-            }
-          </tbody>
-        </table>
-      </div>
+          })
+        }
+      </TableLayoutComponent>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { currency, help } from "../../helper/enum";
-import { TableHeaderComponent } from "../common/tableHeader";
+import { TableLayoutComponent } from "../common/table-layout";
 import { TableRowComponent } from "../common/tableRow";
 import "./Table.css"
 
@@ -44,28 +44,21 @@ export class TableGDPComponent extends React.Component {
     var newData = Object.values(this.props.data)[3];
 
     return (
-        <div className="table-container">
-            <table>
-                <thead>
-                <TableHeaderComponent
-                    tableID={this.props.tableID}
+        <TableLayoutComponent
+        tableID={this.props.tableID}
+        >
+            {newData.map((item, itemNumber) => {
+                return <TableRowComponent
+                    onMouseOver={this.props.onMouseOver}
+                    type={help.tableGDP}
+                    key={itemNumber}
+                    number={itemNumber}
+                    date={this.getListDate(item)}
+                    value={this.getListValue(item)}
                 />
-                </thead>
-                <tbody>
-                    {newData.map((item, itemNumber) => {
-                        return <TableRowComponent
-                            onMouseOver={this.props.onMouseOver}
-                            type={help.tableGDP}
-                            key={itemNumber}
-                            number={itemNumber}
-                            date={this.getListDate(item)}
-                            value={this.getListValue(item)}
-                        />
-                        })
-                    }
-                </tbody>
-            </table>
-        </div>
+                })
+            }
+        </TableLayoutComponent>
         );
     }
 }
